@@ -1,43 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-
+import { Routes, RouterModule } from '@angular/router';
 import { AppComponent }  from './app.component';
-import { WelcomeComponent } from './home/welcome.component'; 
-import { ProductListComponent } from './products/product-list.component';
-import { ProductDetailGuard } from './products/product-guard.service';
-import { ProductDetailComponent } from './products/product-detail.component'; 
-import { ProductFilterPipe } from './products/product-filter.pipe'; 
-import { StarComponent } from './shared/star.component';
+import { routes } from './app.routes';
+
+import { HomeModule } from './home/home.module'; 
+import { MaintenanceModule } from './maintenance/maintenance.module';
+import { SharedModule } from './shared/shared.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule, 
-    RouterModule.forRoot([
-      { path: 'products', component: ProductListComponent },
-      { path: 'product/:id', 
-        canActivate: [ ProductDetailGuard ],
-        component: ProductDetailComponent },
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' }, 
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-
-    ])
+    RouterModule.forRoot(routes), 
+    HomeModule, 
+    MaintenanceModule,
+    SharedModule.forRoot(),
+    NgbModule.forRoot()
   ],
   declarations: [
-    AppComponent,
-    WelcomeComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    ProductFilterPipe,
-    StarComponent
+    AppComponent
   ],
-  providers: [ ProductDetailGuard ],
+  providers: [],
   bootstrap: [
     AppComponent
   ]
