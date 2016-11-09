@@ -7,6 +7,7 @@ import { routes } from './app.routes';
 
 import { HomeModule } from './home/home.module'; 
 import { MaintenanceModule } from './maintenance/maintenance.module';
+import { BorrowerModule } from './borrower/borrower.module';
 import { SharedModule } from './shared/shared.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,6 +21,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot(routes), 
     HomeModule, 
     MaintenanceModule,
+    BorrowerModule, 
     SharedModule.forRoot(),
     NgbModule.forRoot()
   ],

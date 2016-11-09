@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
 import { BorrowerComponent } from './index';
 
-export const MaintenanceRoutes: Route[] = [
+export const BorrowerRoutes: Route[] = [
   {
-    path: 'borrower',
-    component: BorrowerComponent
+    path: 'borrowers',
+    component: BorrowerComponent, 
   }
 ];

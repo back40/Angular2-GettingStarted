@@ -1,4 +1,4 @@
-<h1>Change an Existing Loan</h1>
+<h1>Existing Borrower</h1>
 <br />
 <div class="row">
 	<div class="col-lg-3">
@@ -17,16 +17,16 @@
 			<div class="form-group">
 				<label>Account Number </label>
                 
-				<input name='account-number' type="text" class="form-control" [(ngModel)]="taxIdNumber" placeholder="e.g., 10000120015" />
+				<input name='account-number' type="text" class="form-control" [(ngModel)]="taxIdNumber" placeholder="e.g., 911394593" />
                 
 			</div>
         
 			<div class="form-group">
 				<label>Customer Name</label>
-				<input name='customer-name' type="text" class="form-control" [(ngModel)]="customerName" placeholder="e.g., PBS Development LLC"  />
+				<input name='customer-name' type="text" class="form-control" [(ngModel)]="customerName" placeholder="e.g., Brian Smith"  />
 			</div>
 
-                <a class="btn btn-primary text-xs-right " (click)="findLoans()">Find
+                <a class="btn btn-primary text-xs-right " (click)="findBorrowers()">Find
 				</a>
 			
 	</form>
@@ -50,12 +50,17 @@
                 <tbody *ngIf='borrowers && borrowers.length'>
 				<tr *ngFor='let borrower of borrowers'>
 					<td>
-						{{borrower.TaxId}}
+						{{borrower.TaxIdNumber}}
 					</td>
 					<td>
 						{{borrower.CustomerName}}
 					</td>
-					   <td></td>
+					<td>
+						<a [routerLink]="['/borrower-detail', borrower.CustomerNumber]">
+                            Edit
+                            </a>
+
+					</td>
 					<td>
 						
 					</td>

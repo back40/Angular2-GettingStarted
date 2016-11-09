@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { IBorrower } from '../shared/interfaces'
-import { CoreBorrowerMasterService } from '../shared/services/core-loanmaster.service'
+import { CoreCustomersService } from '../shared/services/core-customers.service'
 
 @Component({
     moduleId: module.id,
@@ -10,24 +10,24 @@ import { CoreBorrowerMasterService } from '../shared/services/core-loanmaster.se
 })
 export class BorrowerComponent implements OnInit {
 
-    loans: IBorrower[];
+    borrowers: IBorrower[];
     errorMessage: string;
     taxIdNumber: string; 
     customerName: string; 
 
 
-    constructor(public _coreBorrowerMasterService: BorrowerLoanMasterService) { }
+    constructor(public _coreCustomersService: CoreCustomersService) { }
 
     ngOnInit() {
 
       
      }
   
-    findLoans(): void {
+    findBorrowers(): void {
 
-        this._coreBorrowerMasterService.getBorrowers(this.TaxIdNumber, this.customerName)
+        this._coreCustomersService.getBorrowers(this.taxIdNumber, this.customerName)
             .subscribe(
-              response => this.loans = response,
+              response => this.borrowers = response,
               error => this.errorMessage = <any>error);
     }
 }

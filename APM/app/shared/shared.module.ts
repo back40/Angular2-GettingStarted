@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { StarComponent }   from './star.component';
 import { CoreLoanMasterService } from './services/core-loanmaster.service';
-import { NavbarComponent } from './components/navbar/navbar.component'
+import { CoreCustomersService } from './services/core-customers.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
     imports: [ CommonModule, RouterModule ],
@@ -22,7 +23,7 @@ import { NavbarComponent } from './components/navbar/navbar.component'
 export class SharedModule {  static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [ CoreLoanMasterService ]
+      providers: [ CoreLoanMasterService, CoreCustomersService ]
     };
   }
 }
